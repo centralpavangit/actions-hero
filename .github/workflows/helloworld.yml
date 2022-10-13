@@ -1,24 +1,12 @@
 name: Hello world workflow
 on:
-  push:
-    branches: 
-      - main
-  pull_request:
-    branches:
-      -main
-  workflow_dispatch:
-
+  issue_types:
+    - opened
 jobs:
   hello:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2 
-      - name: hello-world
-        run: echo "heloow world"
-        shell: bash
-  goodbye:
-    runs-on: ubuntu-latest
-    steps:
-      - name: goobyeworld
-        run: echo "goodbyeworld"
-        shell: bash
+    steps: 
+     - name: dump github actions
+       run: echo '${{ toJSON(github.event) }}' | jq
+       shell: bash
+  
