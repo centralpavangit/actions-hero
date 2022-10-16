@@ -1,6 +1,7 @@
 name: practice
 on: 
-  push: main
+  push: 
+    branches: main
   pull_request: main
   workflow_dispatch:
 jobs: 
@@ -11,12 +12,16 @@ jobs:
 
         - run: mkdir -p path/to/artifact
 
-        - run: echo hello > /usr/world.txt
-  job2: 
-    runs-on: ubuntu-latest
-    steps:
+        - run: echo hello > /world.txt
         - uses: actions/upload-artifact@v2
     with:
       name: my-artifact
-      path: /usr/world.txt
+      path: /world.txt
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v2
+        - uses: actions/download-artifact@v2
+    with: 
+      name: my-artifact
       
