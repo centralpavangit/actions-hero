@@ -1,8 +1,10 @@
 name: practice
 on: 
   push: 
+    branches: 
+      - main
+  pull_request: 
     branches: main
-  pull_request: main
   workflow_dispatch:
 jobs: 
   job1:
