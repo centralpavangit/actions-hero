@@ -3,27 +3,22 @@ on:
   push: 
     branches: 
       - main
-  pull_request: 
-    branches: main
-  workflow_dispatch:
 jobs: 
   job1:
     runs-on: ubuntu-latest 
     steps:
         - uses: actions/checkout@v2
-
         - run: mkdir -p refs/heads/main/pavan
-
         - run: echo hello > refs/heads/main/pavan/world.txt
         - uses: actions/upload-artifact@v2
-    with:
-      name: my-artifact
-      path: refs/heads/main/pavan/world.txt
+          with:
+            name: my-artifact
+            path: refs/heads/main/pavan/world.txt
   job2:
     runs-on: ubuntu-latest
     steps:
         - uses: actions/checkout@v2
         - uses: actions/download-artifact@v2
-    with: 
-      name: my-artifact
+          with: 
+            name: my-artifact
       
