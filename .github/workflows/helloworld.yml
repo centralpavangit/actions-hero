@@ -8,12 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
      - name: dump github actions
-       run: echo '${{ toJSON(github.event) }}' | jq
-       shell: bash
-     - name: create comment
-       uses: peter-evans/create-or-update-comment@v1
-       with: 
-        issue-number: $ {{ github.event.issue.number }}
-        body: |
-          this is a multiline test comment
-          
+       run: echo '${{ toJSON(github.event) }}'
